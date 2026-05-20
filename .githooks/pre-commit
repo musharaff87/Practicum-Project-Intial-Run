@@ -1,0 +1,31 @@
+﻿#!/bin/sh
+# Pre-commit hook: block files larger than 10MB
+
+MAX_SIZE=$((10 * 1024 * 1024))  # 10MB in bytes
+LIMIT_DISPLAY="10MB"
+FOUND_LARGE=0
+
+echo "Checking staged files for size limit ($LIMIT_DISPLAY)..."
+
+for file in $(git diff --cached --name-only --diff-filter=ACM); do
+    if [ -f "$file" ]; then
+        size=$(wc -c < "$file")
+        if [ "$size" -gt "$MAX_SIZE" ]; then
+            size_mb=$(awk "BEGIN {printf \"%.2f\", $size/1048576}")
+            echo "  BLOCKED: $file (${size_mb} MB) -- exceeds $LIMIT_DISPLAY limit"
+            FOUND_LARGE=1
+        fi
+    fi
+done
+
+if [ "$FOUND_LARGE" -eq 1 ]; then
+    echo ""
+    echo "Commit rejected. To fix this, choose one of:"
+    echo "  1. Add the file to .gitignore  (e.g. echo 'filename' >> .gitignore)"
+    echo "  2. Track with Git LFS          (e.g. git lfs track '*.pth')"
+    echo "  3. Unstage the file            (e.g. git reset HEAD <file>)"
+    exit 1
+fi
+
+echo "All staged files are within the $LIMIT_DISPLAY limit. Proceeding with commit."
+exit 0

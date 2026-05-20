@@ -1,0 +1,71 @@
+﻿# =============================================================
+# Large files - blocked from commits (>10MB)
+# =============================================================
+
+# Pretrained model weights
+*.pth
+*.pt
+*.ckpt
+*.pkl
+*.bin
+*.h5
+*.hdf5
+*.safetensors
+
+# Large images / figures
+*.png
+!TISR/figures/small_*.png
+
+# =============================================================
+# Python
+# =============================================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.so
+
+# Virtual environments
+# venv/
+# env/
+# .venv/
+# .env/
+
+# =============================================================
+# Jupyter Notebooks
+# =============================================================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# =============================================================
+# Experiment outputs & logs
+# =============================================================
+TISR/experiments/
+!TISR/experiments/pretrained_models/.gitkeep
+
+TISR/results/
+TISR/tb_logger/
+*.log
+*.csv
+
+# =============================================================
+# OS & IDE
+# =============================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =============================================================
+# Data folders (usually large)
+# =============================================================
+TISR/datasets/
+data/
