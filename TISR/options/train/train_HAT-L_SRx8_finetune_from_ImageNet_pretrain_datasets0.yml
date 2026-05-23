@@ -110,7 +110,8 @@ logger:
   use_tb_logger: true
   # Adding this block to enable W&B
   wandb:
-    project: Thermal_SR_CIDIS # Name of  W&B project
+    project: Practicum-Baseline # Name of  W&B project
+    api_key: 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
     resume_id: ~ # Leave empty unless resuming a run
 
 
