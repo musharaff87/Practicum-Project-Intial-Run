@@ -4,6 +4,23 @@ tmp/*
 modify_model.py
 hat/version.py
 
+# Large files - stored on Google Drive (use scripts/gdrive_pull.sh to download)
+experiments/Train_*/
+experiments/pretrained_models/
+*.pth
+*.state
+
+# Dataset
+datasets/
+
+# Logs
+*.log
+train_log.txt
+test_log.txt
+
+# Results
+results/
+
 *.DS_Store
 
 # Byte-compiled / optimized / DLL files

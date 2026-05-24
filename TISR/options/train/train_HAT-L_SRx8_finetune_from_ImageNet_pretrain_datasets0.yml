@@ -10,27 +10,27 @@ datasets:
   train:
     name: thermal
     type: PairedImageDataset
-    dataroot_gt: datasets/thermal/train
-    dataroot_lq: datasets/thermal/train_LR_x8
+    dataroot_gt: /home/jovyan/work/data/CIDIS/dataset/thermal/train
+    dataroot_lq: /home/jovyan/work/data/CIDIS/dataset/thermal/train_LR_x8
     io_backend:
       type: disk
 
-    gt_size: 384
+    gt_size: 256
     use_hflip: true
     use_rot: true
 
     # data loader
     use_shuffle: true
     num_worker_per_gpu: 4
-    batch_size_per_gpu: 4
+    batch_size_per_gpu: 2
     dataset_enlarge_ratio: 1
     prefetch_mode: ~
 
   val_1:
     name: thermal
     type: PairedImageDataset
-    dataroot_gt: datasets/thermal/val
-    dataroot_lq: datasets/thermal/val_LR_x8
+    dataroot_gt: /home/jovyan/work/data/CIDIS/dataset/thermal/val
+    dataroot_lq: /home/jovyan/work/data/CIDIS/dataset/thermal/val_LR_x8
     io_backend:
       type: disk
 
@@ -110,9 +110,9 @@ logger:
   use_tb_logger: true
   # Adding this block to enable W&B
   wandb:
-    project: Practicum-Baseline # Name of  W&B project
-    api_key: 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
-    resume_id: ~ # Leave empty unless resuming a run
+    project: Thermal_SR_CIDIS
+    # api_key: set via environment variable: export WANDB_API_KEY=your_key
+    resume_id: ~
 
 
 # dist training settings
